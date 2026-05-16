@@ -117,5 +117,32 @@ footer{background:#080808;padding:3rem 5%;text-align:center;color:var(--muted);}
   <p style="margin-top:0.8rem;">info@lensandlight.com.tr | +90 212 555 0600 | Beyoğlu, İstanbul</p>
   <p style="margin-top:1rem;font-size:0.8rem;">© 2025 Lens & Light Stüdyo. Tüm hakları saklıdır.</p>
 </footer>
-</body>
+
+<section style="padding:5rem 5%;background:rgba(26,26,26,0.5);">
+  <div style="color:#f59e0b;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:0.6rem;">Portföy</div>
+  <div style="font-size:2rem;font-weight:900;margin-bottom:1.5rem;">Kategoriye Göre Filtrele</div>
+  <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2rem;" id="photoTabs">
+    <button onclick="showPhotocat('hepsi',this)" style="padding:0.5rem 1.2rem;border:1px solid #f59e0b;border-radius:2rem;font-size:0.82rem;font-weight:700;color:#111;background:#f59e0b;cursor:pointer;">Tümü</button>
+    <button onclick="showPhotocat('dugun',this)" style="padding:0.5rem 1.2rem;border:1px solid rgba(245,158,11,0.25);border-radius:2rem;font-size:0.82rem;font-weight:600;color:#6b7280;background:transparent;cursor:pointer;">Düğün</button>
+    <button onclick="showPhotocat('kurumsal',this)" style="padding:0.5rem 1.2rem;border:1px solid rgba(245,158,11,0.25);border-radius:2rem;font-size:0.82rem;font-weight:600;color:#6b7280;background:transparent;cursor:pointer;">Kurumsal</button>
+    <button onclick="showPhotocat('urun',this)" style="padding:0.5rem 1.2rem;border:1px solid rgba(245,158,11,0.25);border-radius:2rem;font-size:0.82rem;font-weight:600;color:#6b7280;background:transparent;cursor:pointer;">Ürün</button>
+    <button onclick="showPhotocat('mimari',this)" style="padding:0.5rem 1.2rem;border:1px solid rgba(245,158,11,0.25);border-radius:2rem;font-size:0.82rem;font-weight:600;color:#6b7280;background:transparent;cursor:pointer;">Mimari</button>
+  </div>
+  <div style="columns:3;gap:1rem;" id="photoGrid">
+    <div data-cat="dugun" style="margin-bottom:1rem;break-inside:avoid;border-radius:0.7rem;overflow:hidden;"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&q=80" style="width:100%;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+    <div data-cat="kurumsal" style="margin-bottom:1rem;break-inside:avoid;border-radius:0.7rem;overflow:hidden;"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=80" style="width:100%;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+    <div data-cat="urun" style="margin-bottom:1rem;break-inside:avoid;border-radius:0.7rem;overflow:hidden;"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80" style="width:100%;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+    <div data-cat="mimari" style="margin-bottom:1rem;break-inside:avoid;border-radius:0.7rem;overflow:hidden;"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80" style="width:100%;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+    <div data-cat="dugun" style="margin-bottom:1rem;break-inside:avoid;border-radius:0.7rem;overflow:hidden;"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&q=80" style="width:100%;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+    <div data-cat="urun" style="margin-bottom:1rem;break-inside:avoid;border-radius:0.7rem;overflow:hidden;"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" style="width:100%;display:block;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+  </div>
+</section>
+<script>
+function showPhotocat(cat,btn){
+  document.querySelectorAll('#photoTabs button').forEach(b=>{b.style.background='transparent';b.style.borderColor='rgba(245,158,11,0.25)';b.style.color='#6b7280';});
+  btn.style.background='#f59e0b';btn.style.borderColor='#f59e0b';btn.style.color='#111';
+  document.querySelectorAll('#photoGrid [data-cat]').forEach(el=>{el.style.display=cat==='hepsi'||el.dataset.cat===cat?'block':'none';});
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+</script></body>
 </html>
